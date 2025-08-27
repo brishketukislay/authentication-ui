@@ -1,0 +1,18 @@
+{
+    "homePage": {
+        "welcomeText": "Welcome to the Home Page!",
+        "register": "Go to Register",
+        "login": "Go to Login"
+    },
+    "login": {
+        "title": "Login",
+        "emailPlaceholder": "Email",
+        "passwordPlaceholder": "Password",
+        "button": "Login",
+        "successMessage": "Logged in Successfully"
+    },
+    "joke": {
+        "button": "Get Random Joke",
+        "errorMessage": "Failed to fetch joke."
+    }
+}

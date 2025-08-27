@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import http from '../interceptor/axios.interceptor';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -8,7 +9,7 @@ const Register: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/users/register', {
+      const response = await http.post('/users/register', {
         email,
         password
       });
