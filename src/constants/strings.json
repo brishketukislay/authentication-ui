@@ -10,7 +10,8 @@
         "emailPlaceholder": "Email",
         "passwordPlaceholder": "Password",
         "successMessage": "Registered Successfully",
-        "registerMessage": "Registered Successfully"
+        "registerMessage": "Registered Successfully",
+        "userExists": "User already exists. Please try with a different email."
     },
     "login": {
         "title": "Login",
@@ -19,10 +20,37 @@
         "successMessage": "Logged in Successfully",
         "loginMessage": "Logged in Successfully"
     },
-    "joke": {
-        "button": "Get Random Joke",
-        "errorMessage": "Failed to fetch joke.",
-        "setup": "Setup:",
-        "punchline": "Punchline:"
+    "logout": {
+        "title": "Logout",
+        "logoutMessage": "You have been logged out successfully."
+    },
+    "tasks": {
+        "title": "Tasks",
+        "addTask": "Add Task",
+        "welcomeMessage": "Welcome to the Tasks Page!"
+    },
+    "errors": {
+        "requiredField": "This field is required",
+        "invalidEmail": "Please enter a valid email address",
+        "minLength": "Password must be at least 6 characters long",
+        "registrationFailed": "Registration failed. Please try again.",
+        "loginFailed": "Login failed. Please check your credentials and try again.",
+        "errorOccured":"An error occurred. Please try again."
+    },
+    "buttons": {
+        "submit": "Submit",
+        "reset": "Reset"
+    }, 
+    "navigation": {
+        "home": "Home",
+        "register": "Register",
+        "login": "Login",
+        "tasks": "Tasks"
+    },
+    "operations": {
+        "edit": "Edit",
+        "delete": "Delete",
+        "update": "Update",
+        "cancel": "Cancel"
     }
 }

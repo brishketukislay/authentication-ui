@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from '../interceptor/axios.interceptor'; // Your Axios instance
 import { Task } from '../interface/types'; // Assuming you have the Task interface
 import styles from '../style/Tasks.module.css'; // Assuming you use CSS modules for styling
+import strings from '../constants/strings.json';
 
 const Tasks: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]); // State to store tasks
@@ -64,7 +65,7 @@ const Tasks: React.FC = () => {
           onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
           className={styles.textareaField}
         />
-        <button type="submit" className={styles.addTaskButton}>Add Task</button>
+        <button type="submit" className={styles.addTaskButton}>{strings.tasks.addTask}</button>
       </form>
 
       {/* Task List */}
@@ -77,7 +78,7 @@ const Tasks: React.FC = () => {
               className={styles.deleteButton} 
               onClick={() => handleDeleteTask(task._id)}
             >
-              Delete
+              {strings.operations.delete}
             </button>
           </div>
         ))}

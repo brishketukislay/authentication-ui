@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Home from './components/Home';
-import Logout from './components/Logout'; // Ensure you import the Logout component
-import RandomJoke from './components/joke';
+import Logout from './components/Logout';
 import Tasks from './components/Tasks';
 
 const App: React.FC = () => {
@@ -16,7 +15,6 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/joke" element={<RandomJoke />} />
           <Route path="/tasks" element={<Tasks />} />
         </Routes>
       </div>

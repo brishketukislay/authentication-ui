@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import http from '../interceptor/axios.interceptor';
-import styles from '../style/Logout.module.css'; // Import custom CSS module for Logout button styling
+import styles from '../style/Logout.module.css';
+import strings from '../constants/strings.json';
 
 const Logout: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +23,6 @@ const Logout: React.FC = () => {
     } catch (error) {
       console.error('Logout failed:', error);
     } finally {
-      // Clear cookies for access and refresh tokens
       document.cookie = 'access_token=; Max-Age=0; path=/;';
       document.cookie = 'refresh_token=; Max-Age=0; path=/;';
       sessionStorage.removeItem('isLoggedIn'); // Clear login status from localStorage
@@ -32,7 +32,7 @@ const Logout: React.FC = () => {
 
   return (
     <button onClick={logout} className={styles.logoutButton}>
-      Logout
+        {strings.logout.title}
     </button>
   );
 };
