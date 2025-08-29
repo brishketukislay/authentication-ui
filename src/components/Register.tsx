@@ -1,45 +1,78 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import http from '../interceptor/axios.interceptor';
+import strings from '../constants/strings.json';
+import { useNavigate } from 'react-router-dom';
+import styles from '../style/Register.module.css'; // Assuming you have a specific module for Register styling
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State to hold the error message
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
+
     try {
       const response = await http.post('/users/register', {
         email,
-        password
+        password,
       });
-      alert('User Registered Successfully');
-      console.log(response.data);  // You can store the JWT token here
-    } catch (error) {
-      console.error('Error registering user', error);
+
+      console.log(response.data);
+      navigate('/login'); // Redirect to login page after successful registration
+      setErrorMessage(null); // Clear any previous error messages
+    } catch (error: any) {
+      if (error.response && error.response.data.message === 'User already exists') {
+        setErrorMessage(strings.register.userExists);
+      } else {
+        setErrorMessage(strings.errors.errorOccured);
+      }
+      console.error('Error registering user:', error);
     }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
+    <div className={styles.container}>
+      <h2 className={styles.title}>{strings.register.title}</h2>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          type="email"
+          className={styles.inputField}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
+        <input
+          type="password"
+          className={styles.inputField}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <input
+          type="password"
+          className={styles.inputField}
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button type="submit" className={styles.submitButton}>
+          {strings.register.title}
+        </button>
       </form>
+
+      {/* Conditionally display the error message */}
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
     </div>
   );
 };
 
 export default Register;
+export { };

@@ -1,7 +1,8 @@
-// Tasks.tsx
 import React, { useState, useEffect } from 'react';
 import axios from '../interceptor/axios.interceptor'; // Your Axios instance
 import { Task } from '../interface/types'; // Assuming you have the Task interface
+import styles from '../style/Tasks.module.css'; // Assuming you use CSS modules for styling
+import strings from '../constants/strings.json';
 
 const Tasks: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]); // State to store tasks
@@ -46,35 +47,42 @@ const Tasks: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Your Tasks</h2>
+    <div className={styles.container}>
+      <h2 className={styles.header}>Your Tasks</h2>
 
       {/* Add Task Form */}
-      <form onSubmit={handleAddTask}>
+      <form className={styles.addTaskForm} onSubmit={handleAddTask}>
         <input
           type="text"
           placeholder="Task Title"
           value={newTask.title}
           onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
+          className={styles.inputField}
         />
         <textarea
           placeholder="Task Description"
           value={newTask.description}
           onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
+          className={styles.textareaField}
         />
-        <button type="submit">Add Task</button>
+        <button type="submit" className={styles.addTaskButton}>{strings.tasks.addTask}</button>
       </form>
 
       {/* Task List */}
-      <ul>
+      <div className={styles.taskList}>
         {tasks.map((task) => (
-          <li key={task._id}>
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <button onClick={() => handleDeleteTask(task._id)}>Delete</button>
-          </li>
+          <div key={task._id} className={styles.taskCard}>
+            <h3 className={styles.taskTitle}>{task.title}</h3>
+            <p className={styles.taskDescription}>{task.description}</p>
+            <button 
+              className={styles.deleteButton} 
+              onClick={() => handleDeleteTask(task._id)}
+            >
+              {strings.operations.delete}
+            </button>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

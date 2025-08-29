@@ -3,46 +3,58 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import http from '../interceptor/axios.interceptor';
 import strings from '../constants/strings.json';
+import styles from '../style/Login.module.css'; // Assuming you have a specific module for Login styling
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State to hold the error message
   const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response = await http.post('/users/login', {
         email,
-        password
+        password,
       });
-      // navigate('/joke');
-       navigate('/tasks');
-      // alert('Logged in Successfully');
-      console.log(response.data);
-      // sessionStorage.setItem('jwt_token',(response.data.token));
-    } catch (error) {
-      console.error('Error logging in', error);
+
+      // If login is successful, navigate to tasks page
+      sessionStorage.setItem('isLoggedIn', 'true');
+      navigate('/tasks');
+      setErrorMessage(null); // Clear any previous error messages
+    } catch (error: any) {
+      // If there's an error, set the error message to show
+      setErrorMessage('Invalid credentials. Please try again.');
+      console.error('Error logging in:', error);
     }
   };
 
   return (
-    <div>
-      <h2>{strings.login.title}</h2>
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
+    <div className={styles.container}>
+      <h2 className={styles.title}>{strings.login.title}</h2>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          type="email"
+          className={styles.inputField}
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
+        <input
+          type="password"
+          className={styles.inputField}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">{strings.login.title}</button>
+        <button type="submit" className={styles.submitButton}>
+          {strings.login.title}
+        </button>
       </form>
+
+      {/* Conditionally display the error message */}
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
     </div>
   );
 };
