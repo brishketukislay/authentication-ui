@@ -15,10 +15,11 @@ const Login: React.FC = () => {
         email,
         password
       });
-      navigate('/joke');
-      alert('Logged in Successfully');
-      console.log(response.data);  // JWT token, which you can save in localStorage
-      sessionStorage.setItem('jwt_token',(response.data.token));
+      // navigate('/joke');
+       navigate('/tasks');
+      // alert('Logged in Successfully');
+      console.log(response.data);
+      // sessionStorage.setItem('jwt_token',(response.data.token));
     } catch (error) {
       console.error('Error logging in', error);
     }
@@ -40,7 +41,7 @@ const Login: React.FC = () => {
           value={password} 
           onChange={(e) => setPassword(e.target.value)} 
         />
-        <button type="submit">Login</button>
+        <button type="submit">{strings.login.title}</button>
       </form>
     </div>
   );

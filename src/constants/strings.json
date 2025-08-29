@@ -8,11 +8,13 @@
         "title": "Login",
         "emailPlaceholder": "Email",
         "passwordPlaceholder": "Password",
-        "button": "Login",
-        "successMessage": "Logged in Successfully"
+        "successMessage": "Logged in Successfully",
+        "loginMessage": "Logged in Successfully"
     },
     "joke": {
         "button": "Get Random Joke",
-        "errorMessage": "Failed to fetch joke."
+        "errorMessage": "Failed to fetch joke.",
+        "setup": "Setup:",
+        "punchline": "Punchline:"
     }
 }
