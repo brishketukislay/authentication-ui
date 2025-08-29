@@ -4,6 +4,14 @@
         "register": "Go to Register",
         "login": "Go to Login"
     },
+    "register": {
+        "title": "Register",
+        "namePlaceholder": "Name",
+        "emailPlaceholder": "Email",
+        "passwordPlaceholder": "Password",
+        "successMessage": "Registered Successfully",
+        "registerMessage": "Registered Successfully"
+    },
     "login": {
         "title": "Login",
         "emailPlaceholder": "Email",

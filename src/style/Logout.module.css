@@ -1,0 +1,27 @@
+/* Logout Button Styles */
+.logoutButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1000; /* Ensures it stays on top */
+}
+
+.logoutButton:hover {
+  background-color: #0056b3;
+}
+
+.logoutButton:active {
+  background-color: #003f7f;
+}
+
+.logoutButton:focus {
+  outline: none;
+}
