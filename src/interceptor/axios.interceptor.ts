@@ -1,20 +1,21 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: 'https://authentication-node-pxse.onrender.com/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
   withCredentials: true, // This ensures cookies (access and refresh tokens) are sent with every request
-});
+}
+);
 
 // Interceptor to handle response and refresh token logic
 axiosInstance.interceptors.response.use(
   (response) => response, // Return the response if it's successful
   async (error) => {
     const originalRequest = error.config;
-
+      console.log("API URL:", process.env.REACT_APP_API_URL);
     // If the error status is 401 (Unauthorized) and the request hasn't been retried yet
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
