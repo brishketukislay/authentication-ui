@@ -23,8 +23,8 @@ const Logout: React.FC = () => {
     } catch (error) {
       console.error('Logout failed:', error);
     } finally {
-      document.cookie = 'access_token=; Max-Age=0; path=/;';
-      document.cookie = 'refresh_token=; Max-Age=0; path=/;';
+      // document.cookie = 'access_token=; Max-Age=0; path=/;';
+      // document.cookie = 'refresh_token=; Max-Age=0; path=/;';
       sessionStorage.removeItem('isLoggedIn'); // Clear login status from localStorage
       navigate('/'); // Redirect to login page after logout
     }
