@@ -1,0 +1,53 @@
+/* _mixins.scss */
+@mixin button-style($bg-color, $text-color, $padding: $button-padding) {
+  padding: $padding;
+  font-size: $font-size-sm;
+  color: $text-color;
+  background-color: $bg-color;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+  }
+
+  &:active {
+    background-color: darken($bg-color, 20%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin input-style() {
+  padding: $input-padding;
+  font-size: $font-size-base;
+  border: 1px solid #ddd;
+  border-radius: $border-radius;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    outline: none;
+  }
+}
+
+@mixin card-style() {
+  background-color: $white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+@mixin grid-layout($columns: 2, $gap: $grid-gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}

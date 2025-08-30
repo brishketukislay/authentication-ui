@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../interceptor/axios.interceptor'; // Your Axios instance
 import { Task } from '../interface/types'; // Assuming you have the Task interface
-import styles from '../style/Tasks.module.css'; // Assuming you use CSS modules for styling
+import styles from '../style/Tasks.module.scss'; // Assuming you use CSS modules for styling
 import strings from '../constants/strings.json';
 
 const Tasks: React.FC = () => {

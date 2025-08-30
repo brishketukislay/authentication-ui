@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import http from '../interceptor/axios.interceptor';
-import styles from '../style/Logout.module.css';
+import styles from '../style/Logout.module.scss';
 import strings from '../constants/strings.json';
 
 const Logout: React.FC = () => {

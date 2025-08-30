@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import strings from '../constants/strings.json';
-import styles from '../style/Home.module.css'; // Import the corresponding CSS module for Home
+import styles from '../style/Home.module.scss';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {

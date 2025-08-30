@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import http from '../interceptor/axios.interceptor';
 import strings from '../constants/strings.json';
-import styles from '../style/Login.module.css'; // Assuming you have a specific module for Login styling
+import styles from '../style/Login.module.scss'; // Assuming you have a specific module for Login styling
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');

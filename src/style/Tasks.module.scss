@@ -1,0 +1,64 @@
+/* Task Component Styles */
+@import '../style_variables/variables';
+@import '../mixins/mixins';
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: $light-bg;
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+}
+
+.header {
+  font-size: $font-size-lg;
+  margin-bottom: 20px;
+  text-align: center;
+  color: $dark-grey;
+}
+
+.addTaskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.inputField, .textareaField {
+  @include input-style();
+}
+
+.textareaField {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.addTaskButton {
+  @include button-style($primary-color, $white);
+}
+
+.taskList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $grid-gap;
+}
+
+.taskCard {
+  @include card-style();
+}
+
+.taskTitle {
+  font-size: $font-size-md;
+  color: $dark-grey;
+  margin-bottom: 10px;
+}
+
+.taskDescription {
+  font-size: $font-size-sm;
+  color: $light-grey;
+}
+
+.deleteButton {
+  @include button-style($danger-color, $white, 8px 12px);
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import http from '../interceptor/axios.interceptor';
 import strings from '../constants/strings.json';
 import { useNavigate } from 'react-router-dom';
-import styles from '../style/Register.module.css'; // Assuming you have a specific module for Register styling
+import styles from '../style/Register.module.scss'; // Assuming you have a specific module for Register styling
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState<string>('');
