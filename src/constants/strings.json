@@ -1,8 +1,8 @@
 {
     "homePage": {
         "welcomeText": "Welcome to the Home Page!",
-        "register": "Go to Register",
-        "login": "Go to Login"
+        "register": "Register",
+        "login": "Login"
     },
     "register": {
         "title": "Register",
@@ -51,6 +51,7 @@
         "edit": "Edit",
         "delete": "Delete",
         "update": "Update",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "save": "Save"
     }
 }
