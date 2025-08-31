@@ -18,7 +18,6 @@ const Logout: React.FC = () => {
 
   const logout = async () => {
     try {
-      console.log("Logging out...");
       await http.post('/users/logout');
     } catch (error) {
       console.error('Logout failed:', error);

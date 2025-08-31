@@ -10,8 +10,6 @@ const Home: React.FC = () => {
   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
   useEffect(() => {
-    // Redirect to /tasks if logged in
-    console.log("isLoggedIn:", isLoggedIn);
     if (isLoggedIn) {
       navigate('/tasks');
     }

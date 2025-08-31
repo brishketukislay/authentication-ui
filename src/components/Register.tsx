@@ -24,8 +24,6 @@ const Register: React.FC = () => {
         email,
         password,
       });
-
-      console.log(response.data);
       navigate('/login'); // Redirect to login page after successful registration
       setErrorMessage(null); // Clear any previous error messages
     } catch (error: any) {
