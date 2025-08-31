@@ -24,11 +24,8 @@ axiosInstance.interceptors.response.use(
         // Retry the original request after successful refresh
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        console.error('Refresh token failed:', refreshError);
-
         sessionStorage.removeItem('isLoggedIn');
         //window.location.href = '/login'; // Redirect to login
-
         return Promise.reject(refreshError);
       }
     }
