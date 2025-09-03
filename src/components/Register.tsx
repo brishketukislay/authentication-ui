@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import http from '../interceptor/axios.interceptor';
 import strings from '../constants/strings.json';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,12 @@ const Register: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // State to hold the error message
   const navigate = useNavigate();
-
+      useEffect(() => {
+        const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+        if (isLoggedIn) {
+          navigate('/tasks');
+        }
+      }, [navigate]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 

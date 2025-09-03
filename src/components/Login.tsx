@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import http from '../interceptor/axios.interceptor';
 import strings from '../constants/strings.json';
-import styles from '../style/Login.module.scss'; // Assuming you have a specific module for Login styling
+import styles from '../style/Login.module.scss';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State to hold the error message
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,14 +22,18 @@ const Login: React.FC = () => {
       // If login is successful, navigate to tasks page
       sessionStorage.setItem('isLoggedIn', 'true');
       navigate('/tasks');
-      setErrorMessage(null); // Clear any previous error messages
+      setErrorMessage(null); 
     } catch (error: any) {
-      // If there's an error, set the error message to show
       setErrorMessage('Invalid credentials. Please try again.');
       console.error('Error logging in:', error);
     }
   };
-
+    useEffect(() => {
+      const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+      if (isLoggedIn) {
+        navigate('/tasks');
+      }
+    }, [navigate]);
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>{strings.login.title}</h2>
